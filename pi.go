@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func pi() {
 	var π = 22 / 7.0
 	// This do not compile
 	// var a, b = 22, 7.0
