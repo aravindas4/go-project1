@@ -7,5 +7,6 @@ func main() {
 	// timesout()
 	// floatt()
 	// sleep_sort()
-	jit()
+	// jit()
+	simple_append()
 }
