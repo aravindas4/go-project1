@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func handler() {
 	var dict map[string]int
 	fmt.Println(dict["errors"])
 
