@@ -8,5 +8,6 @@ func main() {
 	// floatt()
 	// sleep_sort()
 	// jit()
-	simple_append()
+	// simple_append()
+	logger()
 }
