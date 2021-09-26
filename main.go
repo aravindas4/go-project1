@@ -6,5 +6,6 @@ func main() {
 	// raw()
 	// timesout()
 	// floatt()
-	sleep_sort()
+	// sleep_sort()
+	jit()
 }
