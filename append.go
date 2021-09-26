@@ -13,6 +13,6 @@ func simple_append() {
 	copy(c, a) // copying the slice
 	// c = append(c[:1], 4)
 	c[0] = 2 // copy by value
-	// c = append(c, 2)
+	c = append(c, 2, 4)
 	fmt.Printf("\na = %v, c = %v ", a, c)
 }
