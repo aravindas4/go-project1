@@ -9,5 +9,6 @@ func main() {
 	// sleep_sort()
 	// jit()
 	// simple_append()
-	logger()
+	// logger()
+	num()
 }
