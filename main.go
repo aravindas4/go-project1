@@ -10,5 +10,6 @@ func main() {
 	// jit()
 	// simple_append()
 	// logger()
-	num()
+	// num()
+	rang()
 }
