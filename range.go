@@ -1,16 +1,23 @@
 package main
 
-import "fmt"
+import (
+	"context"
+	"fmt"
+)
 
-func fibs(n int) chan int {
+func fibs(ctx context.Context, n int) chan int {
 	ch := make(chan int)
 
 	go func() {
-		defer close(ch)
+		defer close(ch) // No deadlock error
 		a, b := 1, 1
 		for i := 0; i < n; i++ {
-			ch <- a
-			a, b = b, a+b
+			select {
+			case ch <- a:
+				a, b = b, a+b
+			case <-ctx.Done():
+				fmt.Println("cancelled")
+			}
 		}
 	}()
 
@@ -18,8 +25,12 @@ func fibs(n int) chan int {
 }
 
 func rang() {
-	for i := range fibs(5) {
-		fmt.Printf("%d ", i)
+	ctx, cancel := context.WithCancel(context.Background())
+	channel := fibs(ctx, 5)
+	for i := 0; i < 5; i++ {
+		val := <-channel
+		fmt.Printf("%d ", val)
 	}
 	fmt.Println()
+	cancel()
 }
