@@ -1,6 +1,9 @@
 package example
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 func arrays() {
 	var a [5]int
@@ -22,4 +25,24 @@ func arrays() {
 		}
 	}
 	fmt.Println("2d: ", twoD)
+}
+
+func CreateSlice(dataType reflect.Type, size int) []interface{} {
+	return reflect.MakeSlice(reflect.SliceOf(dataType), size, size)
+}
+
+func AppendToSlice(slice []interface{}, item interface{}) []interface{} {
+	slice = append(slice, item)
+	return slice
+}
+
+func GetTypeOfSlice(slice []interface{}) reflect.Type {
+	return reflect.TypeOf(slice[0])
+}
+
+func CopySlice(slice []interface{}) []interface{} {
+	dataType := GetTypeOfSlice(slice)
+	duplicate := reflect.MakeSlice(reflect.SliceOf(dataType), len(slice), len(slice)).Interface()
+	copy(duplicate, slice)
+	return duplicate
 }
